@@ -1,0 +1,358 @@
+/* General Styles */
+
+.responsive-title {
+    color: #FFFFFF;
+    font-family: 'Barrio', serif;
+    margin-bottom: 10px;
+    margin-top: 15px;
+    padding-left: 12px;
+    transform: rotate(2deg);
+    text-align: center;
+}
+
+.film-reel {
+    width: 2em;
+    height: auto;
+    vertical-align: middle;
+    filter: invert(1) brightness(2);
+    margin-left: -0.3em;
+    margin-right: -0.3em;
+}
+
+.orange-letter {
+    color: rgb(198,89,9);
+}
+
+/* Game Rules */
+.game-rules {
+    font-family: 'Amatic SC';
+    color: white;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Play Game Text */
+.play-game-text {
+    font-family: 'Amatic SC', serif;
+    color: rgb(198,89,9);
+    font-size: 35px;
+    margin-bottom: 5px;
+}
+
+/* Or Text */
+.or-text {
+    font-family: 'Amatic SC', serif;
+    color: #FFFFFF;
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+/* Wonky Buttons */
+.wonky-button {
+    border-radius: 0;
+    transform: skew(-5deg);
+    transition: all 0.3s;
+    font-family: 'Amatic SC', serif;
+    font-weight: bold;
+    padding: 10px 30px;
+    font-size: 30px;
+    border: none;
+}
+
+.wonky-button:hover {
+    transform: skew(-8deg) scale(1.05);
+}
+
+/* First Frame Button */
+.first-frame-btn {
+    color: rgb(1,1,1);
+    background-color: #FFFFFF;
+}
+
+.first-frame-btn:hover {
+    color: #FFFFFF;
+    background-color: rgb(1,1,1);
+}
+
+/* Last Frame Button */
+.last-frame-btn {
+    color: rgb(6,6,6);
+    background-color: rgb(173,9,9);
+}
+
+.last-frame-btn:hover {
+    color: rgb(173,9,9);
+    background-color: rgb(6,6,6);
+}
+
+/* Skewed Line */
+.skewed-line {
+    display: block;
+    width: 1px;
+    height: 90px;
+    background-color: #ffffff;
+    transform: skewX(-3deg);
+    margin: 0 auto;
+}
+
+/* Stamp Image */
+.stamp-image {
+    height: auto;
+    filter: invert(1);
+    padding: 10px;
+    margin: auto;
+    display: block;
+}
+
+/* Footer Links */
+
+.site-footer {
+    padding-bottom: 20px;
+}
+.footer-link {
+    font-family: 'Amatic SC', cursive;
+    font-size: 1.8rem;
+    color: #FFFFFF; 
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    color: #FFD700;
+    text-decoration: none;
+}
+
+.footer-link-twitter {
+    color: #ffffff;
+    font-size: 1.8rem;
+    padding-right: 12px;
+}
+
+.footer-link-twitter:hover {
+    color: blue;
+}
+
+.footer-link-reddit {
+    color: #FFFFFF;
+    font-size: 1rem;
+}
+
+.footer-link-reddit:hover {
+    color: red;
+}
+
+/* Terms of Service Content */
+.tos-content {
+    font-family: 'Amatic SC', cursive;
+    color: #FFFFFF;
+    margin: 0 15%;
+    line-height: 1.6;
+}
+
+.tos-content h2 {
+    font-size: 2em;
+    margin-top: 30px;
+    color: rgb(198, 89, 9); /* Optional: To highlight section headings */
+}
+
+.tos-content p,
+.tos-content ul {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.tos-content ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+#cookieConsentModal .modal-content {
+    /* Override Bootstrap's bg-dark and text-white if needed */
+    background-color: #2c2c2c; /* Darker shade */
+    color: #ffffff; /* White text */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px;
+}
+
+/* Customize the modal header */
+#cookieConsentModal .modal-header {
+    border-bottom: none; /* Remove bottom border */
+    padding-bottom: 0;
+}
+
+/* Customize the modal title */
+#cookieConsentModal .modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Customize the modal body */
+#cookieConsentModal .modal-body {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* Customize links within the modal */
+#cookieConsentModal .modal-body a {
+    color: #ffc107; /* Bootstrap's warning color */
+    text-decoration: underline;
+}
+
+#cookieConsentModal .modal-body a:hover {
+    color: #ffeb3b; /* Lighter yellow on hover */
+}
+
+/* Customize the modal footer */
+#cookieConsentModal .modal-footer {
+    border-top: none; /* Remove top border */
+    padding-top: 0;
+    justify-content: space-between; /* Distribute buttons */
+}
+
+/* Small Mobile Device */
+@media (max-width: 378px) {
+    .responsive-title {
+        font-size: 24px;
+    }
+
+    .game-rules {
+        font-size: 35px;
+    }
+
+    .play-game-text {
+        font-size: 25px;
+    }
+
+    .wonky-button {
+        padding-left: 5px;
+        padding-right: 5px;
+        font-size: 25px;
+    }
+
+    .stamp-image {
+        width: 300px;
+    }
+
+    .site-footer {
+        padding-bottom: 10px;
+        padding-right: 15px;
+    }
+
+    .footer-link-reddit {
+        font-size: 0.6rem;
+    }
+
+    .footer-link-twitter {
+        font-size: 1.2rem;
+    }
+
+    .footer-link {
+        font-size: 1.2rem;
+    }
+
+}
+
+/* Mobile Devices (Phones) */
+/* # Phone */
+@media (min-width: 379px) and (max-width: 575.98px) {
+    .responsive-title {
+        font-size: 30px;
+    }
+
+    .game-rules {
+        font-size: 35px;
+    }
+
+    .play-game-text {
+        font-size: 25px;
+    }
+
+    .wonky-button {
+        padding-left: 5px;
+        padding-right: 5px;
+        font-size: 25px;
+    }
+
+    .stamp-image {
+        width: 300px;
+    }
+
+    .site-footer {
+        padding-bottom: 10px;
+        padding-right: 15px;
+    }
+
+    .footer-link-reddit {
+        font-size: 0.8rem;
+    }
+
+    .footer-link-twitter {
+        font-size: 1.4rem;
+    }
+
+    .footer-link {
+        font-size: 1.4rem;
+    }
+}
+
+/* Tablets */
+/* # Tablet */
+@media (min-width: 576px) and (max-width: 1199.98px) {
+    .responsive-title {
+        font-size: 40px;
+    }
+
+    .game-rules {
+        font-size: 45px;
+        text-align: left;
+    }
+
+    .play-game-text {
+        font-size: 40px;
+    }
+
+    .or-text {
+        font-size: 32px;
+    }
+
+    .stamp-image {
+        width: 500px;
+    }
+}
+
+/* Desktops */
+/* # Desktop */
+@media (min-width: 1200px) {
+    .responsive-title {
+        font-size: 75px;
+    }
+
+    .game-rules {
+        font-size: 60px;
+        text-align: left;
+    }
+
+    .stamp-image {
+        width: 650px;
+    }
+}
+
+/* Hover and Active States for Touch Devices */
+/* # Touch Devices */
+@media (hover: none) and (pointer: coarse) {
+    .wonky-button:active,
+    .wonky-button:focus {
+        transform: skew(-8deg) scale(1.05);
+    }
+
+    .first-frame-btn:active,
+    .first-frame-btn:focus {
+        color: #FFFFFF;
+        background-color: rgb(1,1,1);
+    }
+
+    .last-frame-btn:active,
+    .last-frame-btn:focus {
+        color: rgb(173,9,9);
+        background-color: rgb(6,6,6);
+    }
+}

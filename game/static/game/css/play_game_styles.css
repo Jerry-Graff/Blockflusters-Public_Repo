@@ -1,0 +1,434 @@
+/* Universal Image Styling */
+.game-image {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Bottom Section Styles */
+.bottom-section {
+    margin-top: 20px;
+    padding-left: 39px;
+    padding-right: 39px;
+}
+
+/* Seconds Left and Score Text */
+.seconds-left,
+.score-text {
+    font-family: 'Amatic SC', serif;
+    color: white;
+    margin: 0;
+}
+
+/* Base Font Sizes (Phones) */
+.seconds-left {
+    font-size: 25px;
+}
+
+.score-text {
+    font-size: 50px;
+}
+
+.hint-button {
+    font-family: 'Amatic SC', serif;
+    font-size: 25px;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+/* Hover Effects */
+.hint-button:hover {
+    color: #FFD700; /* Yellow text on hover */
+    transform: scale(1.05); /* Slightly larger on hover */
+}
+
+/* Adjust Margins to Reduce Gap */
+.hint-button,
+.score-text {
+    margin-bottom: 10px;
+}
+
+/* Warning Class for Timer */
+#time-remaining.timer-warning {
+    color: red;
+    transition: color 0.5s ease;
+}
+
+/* Form and Button Styles */
+.answer-form {
+    display: flex;
+    transform: skew(-3deg); /* Slight 3-degree skew */
+    background-color: #FFD700; /* Deep Yellow */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    max-width: 100%;
+    margin: 0 auto;
+    overflow: hidden; /* Ensure child elements don't overflow */
+}
+
+.answer-input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    font-size: 28px;
+    font-family: 'Amatic SC', serif;
+    color: #000000; /* Black Text */
+    background-color: #FFD700; /* Deep Yellow */
+    outline: none;
+    transform: skew(3deg); /* Counteract parent skew */
+}
+
+.answer-input::placeholder {
+    color: #000000; /* Black Placeholder */
+    font-family: 'Amatic SC', serif; /* Amatic SC font for placeholder */
+}
+
+.submit-button {
+    border: none;
+    background-color: #FF6600; /* Orange */
+    color: #000000; /* Black Text */
+    padding: 10px 20px;
+    font-size: 24px;
+    font-family: 'Amatic SC', serif;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-left: 10px;
+}
+
+/* Hover Effect */
+.submit-button:hover {
+    background-color: #e65c00; /* Slightly darker orange */
+    transform: skew(3deg) scale(1.05);
+}
+
+/* Ensure Form and Buttons are Connected */
+.answer-form,
+.submit-button,
+.answer-input,
+.skip-button {
+    border-radius: 0;
+}
+
+.answer-input {
+    border-bottom: none; /* Remove bottom border to connect with button */
+}
+
+.submit-button,
+.skip-button {
+    border-top: none; /* Remove top border to connect with input */
+}
+
+/* Skip Button Styling */
+.skip-button {
+    border: none;
+    background-color: #FF0000; /* Red */
+    color: #000000; /* Black Text */
+    padding: 10px 20px;
+    font-size: 24px;
+    font-family: 'Amatic SC', serif;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Hover Effect for Skip Button */
+.skip-button:hover {
+    background-color: #cc0000; /* Darker red */
+    transform: skew(3deg) scale(1.05);
+}
+
+/* Movie Banner Styling */
+:root {
+    --banner-padding-large: 40px;
+    --banner-padding-medium: 20px;
+    --banner-padding-small: 10px;
+
+    --title-font-size-large: 3.5rem;
+    --title-font-size-medium: 2.5rem;
+    --title-font-size-small: 1.8rem;
+    --title-font-size-xs: 1.6rem;
+}
+
+.movie-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-left: var(--banner-padding-large);
+    padding-right: var(--banner-padding-large);
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center vertically by default */
+    box-sizing: border-box;
+}
+
+.movie-banner-title {
+    color: #FFFFFF;
+    font-family: 'Barrio', cursive;
+    font-size: var(--title-font-size-large);
+    text-align: center;
+    word-wrap: break-word;
+    line-height: 1.2;
+}
+
+.wrong-answer .movie-banner-title {
+    color: red;
+}
+
+/* Media Queries */
+@media (max-width: 378px) {
+    .seconds-left {
+        font-size: 25px;
+    }
+
+    .score-text {
+        font-size: 50px;
+    }
+
+    .hint-button {
+        font-size: 25px;
+    }
+
+    /* Adjust margins */
+    .hint-button,
+    .score-text {
+        margin-bottom: 5px; /* Reduce margin */
+    }
+
+    /* Adjust .movie-banner */
+    .movie-banner {
+        padding-left: var(--banner-padding-small);
+        padding-right: var(--banner-padding-small);
+        align-items: flex-start;
+        padding-top: 33vh; /* Move text further up the page */
+    }
+
+    .movie-banner-title {
+        font-size: var(--title-font-size-xs);
+        line-height: 1.2;
+    }
+
+    .answer-form {
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .answer-input {
+        padding: 3px; /* Further reduce padding */
+        font-size: 18px; /* Further reduce font size */
+    }
+
+    .submit-button {
+        padding: 3px 10px; /* Further reduce padding */
+        font-size: 14px; /* Further reduce font size */
+    }
+
+    .skip-button {
+        font-size: 14px;
+        padding-right: 10px;
+    }
+}
+
+/* # Phone */
+@media (min-width: 379px) and (max-width: 579px) {
+    .seconds-left {
+        font-size: 25px;
+    }
+
+    .score-text {
+        font-size: 50px;
+    }
+
+    .hint-button {
+        font-size: 25px;
+    }
+
+    /* Adjust margins */
+    .hint-button,
+    .score-text {
+        margin-bottom: 5px; /* Reduce margin */
+    }
+
+    /* Adjust .movie-banner */
+    .movie-banner {
+        padding-left: var(--banner-padding-small);
+        padding-right: var(--banner-padding-small);
+        align-items: flex-start;
+        padding-top: 33vh; /* Move text further up the page */
+    }
+
+    .movie-banner-title {
+        font-size: var(--title-font-size-small);
+        line-height: 1.2; /* Reduce line height */
+    }
+
+    /* Adjust .answer-form */
+    .answer-form {
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .answer-input {
+        padding: 3px; /* Further reduce padding */
+        font-size: 22px; /* Further reduce font size */
+    }
+
+    .submit-button {
+        padding: 3px 10px; /* Further reduce padding */
+        font-size: 15px; /* Further reduce font size */
+    }
+
+    .skip-button {
+        font-size: 15px;
+        padding-right: 10px;
+    }
+}
+
+/* # Tablet */
+@media (min-width: 580px) and (max-width: 991px) {
+    .seconds-left {
+        font-size: 35px;
+    }
+
+    .score-text {
+        font-size: 80px;
+    }
+
+    .hint-button {
+        font-size: 35px;
+    }
+
+    .hint-button,
+    .score-text {
+        margin-bottom: 10px;
+    }
+
+    /* Adjust .movie-banner */
+    .movie-banner {
+        padding-left: var(--banner-padding-medium);
+        padding-right: var(--banner-padding-medium);
+        align-items: flex-start;
+        padding-top: 33vh;
+    }
+
+    .movie-banner-title {
+        font-size: var(--title-font-size-medium);
+        line-height: 1.2;
+    }
+}
+
+/* # Desktop */
+/* min-width: 992px */
+@media (min-width: 992px) {
+    .seconds-left {
+        font-size: 40px;
+    }
+
+    .score-text {
+        font-size: 100px;
+    }
+
+    .hint-button {
+        font-size: 40px;
+    }
+
+    .hint-button,
+    .score-text {
+        margin-bottom: 15px;
+    }
+
+    .movie-banner {
+        padding-left: var(--banner-padding-large);
+        padding-right: var(--banner-padding-large);
+        align-items: center;
+        padding-top: 0;
+    }
+
+    .movie-banner-title {
+        font-size: var(--title-font-size-large);
+        line-height: 1.2;
+    }
+
+    .answer-input {
+        padding: 3px;
+        font-size: 25px;
+    }
+
+    .submit-button {
+        padding: 3px 10px;
+        font-size: 20px;
+    }
+
+    .skip-button {
+        font-size: 20px;
+        padding-right: 10px;
+    }
+}
+
+/* # Desktop */
+@media (min-width: 1200px) {
+    .seconds-left {
+        font-size: 40px;
+    }
+
+    .score-text {
+        font-size: 100px;
+    }
+
+    .hint-button {
+        font-size: 40px;
+    }
+
+    .hint-button,
+    .score-text {
+        margin-bottom: 15px;
+    }
+
+    /* Adjust .movie-banner */
+    .movie-banner {
+        padding-left: var(--banner-padding-large);
+        padding-right: var(--banner-padding-large);
+        align-items: center;
+        padding-top: 0;
+    }
+
+    .movie-banner-title {
+        font-size: var(--title-font-size-large);
+        line-height: 1.2;
+    }
+
+    .answer-input {
+        padding: 3px;
+        font-size: 30px;
+    }
+
+    .submit-button {
+        padding: 3px 10px;
+        font-size: 25px;
+    }
+
+    .skip-button {
+        font-size: 25px;
+        padding-right: 10px;
+    }
+}
+
+/* Hover and Active States for Touch Devices */
+/* # Touch Devices */
+@media (hover: none) and (pointer: coarse) {
+    .hint-button:active,
+    .hint-button:focus {
+        color: #FFD700; /* Yellow text on active/focus */
+        transform: scale(1.05); /* Slightly larger on active/focus */
+    }
+
+    .submit-button:active,
+    .submit-button:focus {
+        background-color: #e65c00; /* Slightly darker orange */
+        transform: skew(3deg) scale(1.05);
+    }
+}

@@ -1,0 +1,37 @@
+[   {
+        "min_score": 50,
+        "max_score": 55,
+        "message": "Not bad, Lloyd, not bad at all. Your knowledge really is Kubrickian. You sure know your movies Jack... or is it Grady!? You've managed to stay out of the hedge maze for now, but beware - all work and no play makes Jack a dull boy. Take a break and get back to the gold room",
+        "image": "performance/shining.png"
+    },  
+    {
+        "min_score": 40,
+        "max_score": 49,
+        "message": "I'm your number one fan. There's nothing to worry about. You're going to be just fine. I really am your number one fan. After I finish with this sledgehammer, you'll have plenty of time to watch those few movies you missed. Now shut up and take your pills.",
+        "image": "performance/misery.png"
+    },
+    {
+        "min_score": 30,
+        "max_score": 39,
+        "message": "You got mad smarts, kid. Just don't get complacent...I don't wanna see you in a Harvard bar paraphrasing Gordon Wood. The field medal is within your grasp, as long as you don't have to go see about a girl. Your move, chief!",
+        "image": "performance/goodwillhunting.png"
+    },
+    {
+        "min_score": 20,
+        "max_score": 29,
+        "message": "I know your type: young, dumb, and full of cum. Get back to the valley, rookie. You've got some potential, but you need to ride those waves harder. Don't let this score define you because we all know, Johnny Utah always gets his man! In the meantime get round the corner and get me two meatball subs... Utah! Get me two!",
+        "image": "performance/pointbreak.png"
+    },
+    {
+        "min_score": 10,
+        "max_score": 19,
+        "message": "You're not wrong, man, you're just an asshole. Looks like you're out of your element here Donny. Maybe next time, lay off the White Russians and get back to the bowling alley dude! You know as they say... sometimes you eat the bear, and sometimes... well!",
+        "image": "performance/lebowski.png"
+    },
+    {
+        "min_score": 0,
+        "max_score": 9,
+        "message": "Ugh, you are totally clueless! It's like, whatever, you barely scratched the surface. Honestly, watching you play was more tangled than Cher's love life. Maybe next time you'll get your act together and stop being such a fashion disaster. Better luck next round!",
+        "image": "performance/clueless.png"
+    }
+]

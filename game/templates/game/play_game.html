@@ -1,0 +1,498 @@
+{% load static %}
+{% load cookie_banner %}
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en" data-bss-forced-theme="light">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+
+    <!-- Primary Meta Tags -->
+    <title>Blockflusters - Movie Guessing Game | First & Last Frame Movie Trivia</title>
+    <meta name="title" content="Blockflusters - Movie Guessing Game | First & Last Frame Movie Trivia">
+    <meta name="description" content="Challenge yourself with Blockflusters, the ultimate movie guessing game! Identify films from their first or last frames, test your movie knowledge, and compete against the clock. Play this free movie trivia game now!">
+    <meta name="keywords" content="movie guessing game, movie trivia game, film quiz, movie frames game, framed, framed game alternative, guess the movie, movie quiz, film trivia, movie game online, movie frame quiz">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.blockflusters.com/">
+    <meta property="og:title" content="Blockflusters - Movie Guessing Game | First & Last Frame Movie Trivia">
+    <meta property="og:description" content="Challenge yourself with Blockflusters, the ultimate movie guessing game! Identify films from their first or last frames in this exciting movie trivia game.">
+    <meta property="og:image" content="{% static 'game/images/apple-touch-icon.png' %}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.blockflusters.com/">
+    <meta property="twitter:title" content="Blockflusters - Movie Guessing Game">
+    <meta property="twitter:description" content="Challenge yourself with Blockflusters, the ultimate movie guessing game! Identify films from their first or last frames.">
+    <meta property="twitter:image" content="{% static 'game/images/apple-touch-icon.png' %}">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.blockflusters.com/play-game/">
+
+    <!-- Structured Data for Game -->
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "WebApplication",
+            "name": "Blockflusters",
+            "url": "https://www.blockflusters.com",
+            "description": "An online movie guessing game where players identify films from their first or last frames",
+            "applicationCategory": "Game",
+            "genre": "Movie Trivia",
+            "image": "{% static 'game/images/android-chrome-512x512.png' %}",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            }
+        }
+        </script>
+
+    <!-- Favicons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'game/images/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'game/images/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'game/images/favicon-16x16.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'game/images/android-chrome-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="512x512" href="{% static 'game/images/android-chrome-512x512.png' %}">
+    <link rel="manifest" href="{% static 'game/images/site.webmanifest' %}">
+    <link rel="icon" href="{% static 'game/images/favicon.ico' %}" type="image/x-icon">
+
+    <!-- Stylesheets-->
+    <link rel="stylesheet" href="{% static 'game/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barrio&display=swap" />
+    <link rel="stylesheet" href="{% static 'game/css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'game/css/play_game_styles.css' %}" />
+</head>
+
+<body style="background: #1C1C1C;">
+    <!-- Title Section -->
+    <section class="title-section" style="padding-bottom: 10px;">
+        <div class="text-center">
+            <h1 class="responsive-title">
+                B l 
+                <img src="{% static 'game/images/1.webp' %}" alt="Blockflusters Movie Guessing Game Interface" class="film-reel">
+                c k&nbsp; F l<span class="orange-letter">&nbsp;u</span>&nbsp;s t e r s
+            </h1>
+        </div>
+    </section>
+
+    <!-- Image Section -->
+    <section class="image-section text-center">
+        <div class="container">
+            <img src="{{ image.image.url }}" alt="Screenshot of Blockflusters game play area" class="img-fluid game-image">
+        </div>
+    </section>
+
+        <!-- Bottom Section -->
+        <section class="bottom-section">
+            <div class="container">
+                <div class="row align-items-center mb-3 justify-content-center">
+                    <div class="col-12 col-lg-3 text-center mb-3 mb-lg-0">
+                        <p class="seconds-left"><strong id="time-remaining">{{ time_remaining }}</strong> Seconds Left!</p>
+                    </div>
+                    <div class="col-12 col-lg-4 text-center mb-3 mb-lg-0">
+                        <form id="answer-form" method="post" action="{% url 'check_answer' %}" class="answer-form">
+                            {% csrf_token %}
+                            {{ form.image_id }}
+                            <input type="text" name="answer" class="answer-input" placeholder="Enter Movie here!" autocomplete="off" novalidate>
+                            <button type="submit" class="submit-button"><strong>Submit</strong></button>
+                            <!-- Skip Button Added Here without Inline Style -->
+                            <button type="button" id="skip-button" class="skip-button"><strong>Skip</strong></button>
+                        </form>
+                    </div>
+                    <div class="col-12 col-lg-3 text-center">
+                        <span class="hint-button" role="button" tabindex="0" aria-label="Quote Me!" data-hint-count="0">
+                            Quote Me!
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <p class="score-text">Score: {{ score }} / 50</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+
+    <div id="message-container"></div>
+    <script src="{% static 'game/js/bootstrap.min.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Function to check if the device is a mobile device
+        function isMobileDevice() {
+            return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+        }
+        
+        // Function to Show Banner with Movie Title, Quote, or Hints
+        // Accepts 'content', optional 'duration', and optional 'className'
+        function showBanner(content, duration = 1500, className = '') {
+            const banner = $(`
+                <div class="movie-banner ${className}">
+                    <h2 class="movie-banner-title">${content}</h2>
+                </div>
+            `);
+            $('body').append(banner);
+        
+            // If on a mobile device, scroll to top smoothly
+            if (isMobileDevice()) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        
+            // Remove the banner after the specified duration
+            setTimeout(() => {
+                banner.fadeOut(500, function() {
+                    $(this).remove();
+                });
+            }, duration);
+        }
+        
+        // Timer Variables
+        const initialTime = 60; // Initial timer value in seconds
+        let timeRemaining;       // Will be calculated from localStorage or set initially
+        const timerElement = document.getElementById('time-remaining');
+        let timerInterval;
+        
+        // Define Maximum Skips
+        const MAX_SKIPS = 6; // Set the desired number of maximum skips here
+        
+        // Skip Limitation
+        let skipRemaining = MAX_SKIPS; // Initialize skips based on the constant
+        
+        // Function to start and manage the timer
+        function startTimer() {
+            clearInterval(timerInterval); // Clear any existing timer
+        
+            // Initialize the timer display
+            timerElement.textContent = timeRemaining;
+        
+            // Remove the warning class in case it's present from a previous timer
+            timerElement.classList.remove('timer-warning');
+            console.log('Timer initialized with:', timeRemaining, 'seconds remaining.');
+        
+            timerInterval = setInterval(() => {
+                if (timeRemaining > 0) {
+                    timeRemaining -= 1;
+                    timerElement.textContent = timeRemaining;
+        
+                    // Check if timeRemaining is 10 seconds or less
+                    if (timeRemaining <= 10) {
+                        if (!timerElement.classList.contains('timer-warning')) {
+                            timerElement.classList.add('timer-warning'); // Add red color
+                            console.log('Timer is in warning state. Class added.');
+                        }
+                    }
+                } else {
+                    clearInterval(timerInterval);
+                    localStorage.removeItem('end_time'); // Clear the stored end time
+                    window.location.href = "{% url 'end_game' %}";
+                }
+            }, 1000);
+        }
+        
+        // Function to initialize the timer on page load
+        function initializeTimer() {
+            const storedEndTime = localStorage.getItem('end_time');
+            const currentTime = new Date().getTime();
+        
+            if (storedEndTime) {
+                const remaining = Math.floor((storedEndTime - currentTime) / 1000);
+                if (remaining > 0) {
+                    timeRemaining = remaining;
+                    startTimer();
+                } else {
+                    // Time has already elapsed
+                    localStorage.removeItem('end_time');
+                    window.location.href = "{% url 'end_game' %}";
+                }
+            } else {
+                // No timer stored, start a new one
+                timeRemaining = initialTime;
+                const endTime = new Date().getTime() + initialTime * 1000;
+                localStorage.setItem('end_time', endTime);
+                startTimer();
+            }
+        }
+        
+        // Initialize the timer when the page loads
+        initializeTimer();
+        
+        // AJAX Setup for CSRF Token
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                let cookies = document.cookie.split(';');
+                for (let cookie of cookies) {
+                    cookie = cookie.trim();
+                    if (cookie.startsWith(name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.slice(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        
+        const csrftoken = getCookie('csrftoken');
+        
+        // AJAX Form Submission for Answer
+        $('#answer-form').on('submit', function(e) {
+            e.preventDefault();
+        
+            const answerInput = $('input[name="answer"]').val().trim();
+            if (answerInput === '') {
+                // No text entered, just return with no warning message
+                return;
+            }
+        
+            // Disable the submit and skip buttons to prevent multiple submissions
+            const submitButton = $(this).find('button[type="submit"]');
+            const skipButton = $('#skip-button');
+        
+            submitButton.prop('disabled', true);
+            skipButton.prop('disabled', true); // Disable skip temporarily
+        
+            $.ajax({
+                url: "{% url 'check_answer' %}",
+                type: "POST",
+                data: $(this).serialize(),
+                headers: { 'X-CSRFToken': csrftoken },
+                success: function(response) {
+                    if (response.error) {
+                        // Handle error from server response if any
+                        showBanner(response.error, 2000, 'error-message');
+                        // Re-enable buttons after some time
+                        setTimeout(() => {
+                            submitButton.prop('disabled', false);
+                            // Only re-enable skip if skips remain
+                            if (skipRemaining > 0) {
+                                skipButton.prop('disabled', false);
+                            }
+                        }, 2000);
+                        return;
+                    }
+        
+                    if (response.correct) {
+                        // Show the banner with the movie title
+                        showBanner(response.movie_title);
+        
+                        // Update the score
+                        $('.score-text').text('Score: ' + response.score + ' / 50');
+        
+                        // Reset and start the timer based on server's response (reinitialize the timer)
+                        timeRemaining = initialTime;
+                        const newEndTime = new Date().getTime() + initialTime * 1000;
+                        localStorage.setItem('end_time', newEndTime);
+                        startTimer();
+        
+                        // Wait for 2 seconds before loading the next image
+                        setTimeout(() => {
+                            if (response.end_game) {
+                                window.location.href = "{% url 'end_game' %}";
+                            } else {
+                                // Update the image and form for the next question
+                                updateGameContent(response);
+                            }
+                            // Re-enable the submit and skip buttons after 2 seconds
+                            submitButton.prop('disabled', false);
+                            if (skipRemaining > 0) {
+                                skipButton.prop('disabled', false);
+                            }
+                        }, 2000);
+                    } else {
+                        // Show the banner with the quote in quotes and 'wrong-answer' class
+                        showBanner(`"${response.quote}"`, 1500, 'wrong-answer');
+        
+                        // Update the score (unchanged)
+                        $('.score-text').text('Score: ' + response.score + ' / 50');
+        
+                        // Wait for 2 seconds before loading the next image
+                        setTimeout(() => {
+                            // Update the image and form for the next question
+                            updateGameContent(response);
+                            // Re-enable the submit and skip buttons after 2 seconds
+                            submitButton.prop('disabled', false);
+                            if (skipRemaining > 0) {
+                                skipButton.prop('disabled', false);
+                            }
+                        }, 2000);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Re-enable the submit and skip buttons on error after 2 seconds
+                    setTimeout(() => {
+                        submitButton.prop('disabled', false);
+                        if (skipRemaining > 0) {
+                            $('#skip-button').prop('disabled', false);
+                        }
+                    }, 2000);
+        
+                    console.error('AJAX Error:', status, error);
+                    alert('An error occurred while processing your answer.');
+                }
+            });
+        });
+        
+        // Function to Update Game Content Without Reloading the Page
+        function updateGameContent(data) {
+            if (data.end_game) {
+                window.location.href = "{% url 'end_game' %}";
+            } else if (data.image_url) {
+                // Update the image source
+                $('.game-image').attr('src', data.image_url);
+                // Update the hidden image_id in the form
+                $('input[name="image_id"]').val(data.image_id);
+                // Clear the input field
+                $('input[name="answer"]').val('');
+        
+                // Reset Hint Button and Clear Messages
+                // Reset the hint-count to 0
+                $('.hint-button').attr('data-hint-count', 0);
+                // Reset the button text to "Quote Me!"
+                $('.hint-button').first().text('Quote Me!');
+                // Clear any existing hints from the message-container
+                $('#message-container').empty();
+            }
+        }
+        
+        // Hint Button Click Handler
+        $('.hint-button').first().on('click', function() {
+            let hintButton = $(this);
+            let hintCount = parseInt(hintButton.attr('data-hint-count'), 10);
+            let imageId = $('input[name="image_id"]').val(); // Get image_id from the hidden input
+        
+            if (!imageId) {
+                alert('No valid image found for hints.');
+                return;
+            }
+        
+            $.ajax({
+                url: "{% url 'get_hint' %}",
+                type: "GET",
+                data: {
+                    image_id: imageId,
+                    hint_count: hintCount
+                },
+                success: function(response) {
+                    if (response.hint) {
+                        // Display the hint for 4 seconds
+                        showBanner(response.hint, 4000);
+        
+                        // Increment the hint count to cycle hints
+                        hintCount += 1;
+                        hintButton.attr('data-hint-count', hintCount);
+        
+                        // Optionally, update button text after first hint
+                        if (hintCount === 1) {
+                            hintButton.text('Quote Me Again!');
+                        }
+                    } else if (response.error) {
+                        showBanner(response.error, 2000, 'error-message');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('AJAX Error:', status, error);
+                    alert('An error occurred while fetching the hint.');
+                }
+            });
+        });
+        
+        // Skip Button Click Handler
+        $('#skip-button').on('click', function() {
+            const imageId = $('input[name="image_id"]').val();
+        
+            if (!imageId) {
+                alert('No valid image found to skip.');
+                return;
+            }
+        
+            // Check if skips remain before proceeding
+            if (skipRemaining <= 0) {
+                showBanner("No more skips left!", 2000, 'skip-message');
+                return;
+            }
+        
+            // Disable the skip button to prevent multiple clicks
+            const skipButton = $(this);
+            skipButton.prop('disabled', true);
+        
+            $.ajax({
+                url: "{% url 'skip_image' %}",
+                type: "POST",
+                data: { image_id: imageId },
+                headers: { 'X-CSRFToken': csrftoken },
+                success: function(response) {
+                    if (response.error) {
+                        showBanner(response.error, 2000, 'error-message');
+                        // Re-enable the skip button on error
+                        setTimeout(() => {
+                            if (skipRemaining > 0) {
+                                skipButton.prop('disabled', false);
+                            }
+                        }, 2000);
+                        return;
+                    }
+        
+                    if (response.skipped) {
+                        // Update the image and image_id
+                        $('.game-image').attr('src', response.image_url);
+                        $('input[name="image_id"]').val(response.image_id);
+        
+                        // Decrement skipRemaining and show how many skips are left
+                        skipRemaining -= 1;
+                        if (skipRemaining > 0) {
+                            showBanner(`${skipRemaining} skips left!`, 1000, 'skip-message');
+                            // Re-enable the skip button after showing the banner
+                            setTimeout(() => {
+                                skipButton.prop('disabled', false);
+                            }, 2000);
+                        } else {
+                            showBanner("No more skips left!", 1000, 'skip-message');
+                            // Keep the skip button disabled as no skips remain
+                        }
+        
+                        // Reset hint data since new image is loaded
+                        $('.hint-button').attr('data-hint-count', 0);
+                        $('.hint-button').first().text('Quote Me!');
+                        $('#message-container').empty();
+        
+                        // Reset and start the timer
+                        timeRemaining = initialTime;
+                        const newEndTime = new Date().getTime() + initialTime * 1000;
+                        localStorage.setItem('end_time', newEndTime);
+                        startTimer();
+                    }
+        
+                    if (response.end_game) {
+                        // Handle end of game
+                        $('.game-image').hide();
+                        $('#answer-form').hide();
+                        $('#skip-button').hide();
+                        $('.score-text').text(`Final Score: ${response.score} / 50`);
+                        showBanner("Game Over!", 2000, 'game-over');
+                        clearInterval(timerInterval); // Stop the timer
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('AJAX Error:', status, error);
+                    alert('An error occurred while skipping the image.');
+        
+                    // Re-enable the skip button on error if skips remain
+                    setTimeout(() => {
+                        if (skipRemaining > 0) {
+                            skipButton.prop('disabled', false);
+                        }
+                    }, 2000);
+                }
+            });
+        });
+    </script>
+    {% cookie_banner %}
+</body>
+
+</html>
